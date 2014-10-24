@@ -2,10 +2,6 @@
 case $1 in
     host)
         shift
-        X=$@
-        if [ ${#X[@]} -lt  1 ]; then
-            X=("/bin/sh")
-        fi
         docker run -t -i --net=host --cap-add SYS_CHROOT -v //:/tmp/ busybox chroot /tmp $@
     ;;
     *)
